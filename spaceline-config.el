@@ -46,6 +46,7 @@
       nyan-cat)
     `(which-function
       (python-pyvenv :fallback python-pyenv)
+      fcitx
       (purpose :priority 94)
       (battery :when active)
       (selection-info :priority 95)

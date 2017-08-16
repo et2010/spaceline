@@ -679,6 +679,32 @@ mouse-3: go to end"))))
   "•REC"
   :when defining-kbd-macro)
 
+(defcustom spaceline-show-fcitx-status nil
+  "Whether to show the status of fcitx in `fcitx'.
+
+When non-nil, show the status of fcitx in the `fcitx'
+segment.  Otherwise do not show at all."
+  :type 'boolean
+  :group 'spaceline
+  :risky t)
+
+(defcustom spaceline-fcitx-text "漢"
+  "Text to show in the `fcitx' segment when fcitx is on"
+  :type 'string
+  :group 'spaceline)
+
+(spaceline-define-segment fcitx
+  "Show whether fcitx is on"
+  (when (and spaceline-show-fcitx-status
+             active
+             (featurep 'fcitx))
+    (propertize
+     (if (fcitx--active-p)
+         (propertize spaceline-fcitx-text
+                     'face '((t (:weight bold :foreground "white"))))
+       "En")
+     'help-echo "fcitx")))
+
 (provide 'spaceline-segments)
 
 ;;; spaceline-segments.el ends here
