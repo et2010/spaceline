@@ -700,8 +700,7 @@ segment.  Otherwise do not show at all."
              (featurep 'fcitx))
     (propertize
      (if (fcitx--active-p)
-         (propertize spaceline-fcitx-text
-                     'face '((t (:weight bold :foreground "white"))))
+         spaceline-fcitx-text
        "En")
      'help-echo "fcitx")))
 
